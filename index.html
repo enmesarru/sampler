@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/css/normalize.css">
+    <link rel="stylesheet" href="src/css/spectre.min.css">
     <link rel="stylesheet" href="src/css/main.css" />
     <title>Sampler</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="columns">
+            <div class="column col-12" id="window_container" class="container" style="background:red; height:75vh">
+                <div id="window" class="container">
+                    <div class="columns" style="height:100%;">
+                        <div class="column col-12" style="background:blueviolet; height: 25%;">
+                            Waveform
+                        </div>
+                        <div class="column col-12">
+                            Properties
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-12" style="background:blue; height:25vh">
+                <div class="divsd">Midi Keyboard </div>
+            </div>
+        </div>
+    </div>
     <script src="src/js/main.js"></script>
 </body>
 </html>
