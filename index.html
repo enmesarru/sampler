@@ -12,23 +12,80 @@
 <body>
     <div class="container">
         <div class="columns">
-            <div class="column col-12" id="window_container" class="container" style="background:red; height:75vh">
+            <div class="column col-12" id="window_container" class="container">
                 <div id="window" class="container">
                     <div class="columns" style="height:100%;">
-                        <div class="column col-12" style="background:blueviolet; height: 25%;">
-                            Waveform
+                        <div class="col-12" id="waveform">
+                            <canvas id="waveform_canvas"></canvas>
                         </div>
-                        <div class="column col-12">
-                            Properties
+                        <div class="column col-12" style=" height: 75%;">
+                            <div class="columns" style="height:100%">
+                                <div class="audio_properties column col-3">
+                                    <button class="btn btn-primary btn-sm" id="add_sample">Add</button>
+                                    <ul>
+                                        <li>Test 1</li>
+                                        <li>Test 2</li>
+                                        <li>Test 3</li>
+                                        <li>Test 3</li>
+                                        <li>Test 3</li>
+                                        <li>Test 3</li>
+                                    </ul>
+                                </div>
+                                <div class="column col-9" style="padding:20px;">
+                                    <div class="columns col-12">
+                                        <div class="col-2">
+                                            <div style="overflow:hidden; height:0px;">
+                                                <input type="file" id="audio_file_upload" accept=".wav"/>
+                                            </div>
+                                            <button class="btn btn-success" onclick="chooseFile()">Upload</button>
+                                        </div>
+                                        <div class="col-10">
+                                            <div class="form-group">
+                                                <select class="form-select">
+                                                    <option>Choose an audio file</option>
+                                                    <option>audiofile.wav</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-3 col-sm-12">
+                                                        <label class="form-label" for="lbl_start_note">Start Note</label>
+                                                    </div>
+                                                    <div class="col-9 col-sm-12">
+                                                        <input class="form-input" type="number" max="88" id="start_note" placeholder="Start Note">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-8">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="col-3 col-sm-12">
+                                                            <label class="form-label" for="lbl_end_note">End Note</label>
+                                                        </div>
+                                                        <div class="col-9 col-sm-12">
+                                                            <input class="form-input" type="number" max="88" id="end_note" placeholder="End Note">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="column col-12" style="background:blue; height:25vh">
+            <div class="column col-12" id="midi_container">
                 <div class="divsd">Midi Keyboard </div>
             </div>
         </div>
     </div>
+    <script src="src/js/filemanager.js"></script>
+    <script src="src/js/waveform.js"></script>
     <script src="src/js/main.js"></script>
 </body>
 </html>

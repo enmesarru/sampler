@@ -2,10 +2,35 @@
     display: flex;   
     justify-content: center;
     align-items: center;
+    background-color: #272727;
+    height:75vh;
 }
 
 #window {
     width: 900px;
     height: 400px;
-    background:yellow;
+    background:#edf5e1;
+}
+
+#waveform {
+    background:#ff652f;
+    height: 25%;
+}
+
+#midi_container {
+    background-color: #14a76c;
+    height:25vh;
+}
+
+.audio_properties {
+    background-color: #e7e7e7;
+    height: 100%;
+    position: relative;
+    overflow: scroll;
+}
+
+#add_sample {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
