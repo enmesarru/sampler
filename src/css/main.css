@@ -29,8 +29,9 @@
     overflow: scroll;
 }
 
-#add_sample {
-    position: absolute;
-    right: 0;
-    top: 0;
+#sample_list div{
+    width: 100%;
+    padding-left:15px;
+    background-color:#14a76c;
+    color: #FFFFFF;
 }
