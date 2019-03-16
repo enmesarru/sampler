@@ -5,38 +5,59 @@ function Audio(buffer, audioContext, canvasWidth) {
     this.start = 0;
     this.end = this.audioBuffer.duration;
     this.zoom = 1;
-    console.log(canvasWidth)
+    this.surfing = 10;
+    this.canvasWidth = canvasWidth;
     this.startTimeCircle = new Circle(new Point(0, 0), "blue", 10);
     this.endTimeCircle = new Circle(new Point((canvasWidth * this.end) / this.end, 0), "yellow", 10);
 }
 
 Audio.prototype = {
-    setStart: function(value) {
-        this.start = value;
+    setStart: function(value, width) {
+        this.start = parseFloat(value);
+        if(this.start > this.end) {
+            return;
+        }
+        let perPixel = (width * this.zoom * this.start) / (this.audioBuffer.duration);
+        this.startTimeCircle.set(perPixel, 0);
     },
-    setEnd: function(value) {
-        this.end =  value;
-    },
-    getCircles() {
-        return [this.startTimeCircle, this.endTimeCircle];
+    setEnd: function(value, width) {
+        this.end = parseFloat(value);
+        if(this.end  < this.start) {
+            return;
+        }
+        // width * zoomValue * secondValue == perPixel * duration
+        let perPixel = (width * this.zoom * this.end) / this.audioBuffer.duration;
+        this.endTimeCircle.set(perPixel, 0);
     },
     zoomIn: function(value = 0.2) {
         if(this.zoom >= 5) {
             return;
         }
         this.zoom += value;
+        this.setStart(this.start, this.canvasWidth);
+        this.setEnd(this.end, this.canvasWidth);
+        console.log(this.zoom)
+
     },
     zoomOut: function(value = 0.2) {
         if(this.zoom <= 0.5) {
             return;
         }
         this.zoom -= value;
+        this.setStart(this.start, this.canvasWidth);
+        this.setEnd(this.end, this.canvasWidth);
+        console.log(this.zoom)
+    },
+    surfingRight: function(width) {
+        this.surfing += 20000;
+    },
+    surfingLeft: function(width) {
+        this.surfing -= 20000;
     },
     draw: function(canvas, canvasContext) {
         let lineWidth = canvas.clientWidth;
         let bufferLeftChannel = this.audioBuffer.getChannelData(0);
         // let lineOpacity = canvas.clientWidth / bufferLeftChannel.length;
-        
         canvasContext.save();
         canvasContext.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
         canvasContext.translate(0, canvas.height / 2);
@@ -44,7 +65,7 @@ Audio.prototype = {
         let totalLength = bufferLeftChannel.length;
         let blocks = Math.floor(totalLength / lineWidth);
         let gap = (canvas.clientWidth * this.zoom / lineWidth);
-        
+
         this.startTimeCircle.draw(canvasContext);
         this.endTimeCircle.draw(canvasContext);
 
@@ -56,7 +77,7 @@ Audio.prototype = {
         for(let i = 0; i < lineWidth; i++) {
             let audioBufferKey = Math.floor(blocks * i);
             let x = i * gap;
-            let y = bufferLeftChannel[audioBufferKey] * canvas.clientHeight / 2;
+            let y = bufferLeftChannel[audioBufferKey +   this.surfing] * canvas.clientHeight / 2;
             canvasContext.beginPath();
             canvasContext.moveTo(x, y);
             canvasContext.lineTo(x, (y * -1));
