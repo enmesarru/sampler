@@ -82,7 +82,6 @@ Audio.prototype = {
             canvasContext.moveTo(x, y);
             canvasContext.lineTo(x, (y * -1));
             canvasContext.stroke();
-            
         }
         canvasContext.restore();
     },
