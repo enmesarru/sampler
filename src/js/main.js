@@ -79,7 +79,6 @@ function chooseFile() {
             .then(function(buffer) {
                 let activeSample = waves.getList().find(x => x.isActive);
                 let waveFormData = new Audio(buffer, audioContext, canvas.clientWidth);
-                // waves.add("Test", waveFormData)
                 waves.addWaveform(activeSample.id, waveFormData);
                 waveFormData.draw(canvas, canvasContext, 2);
                 document.getElementById("end_time").setAttribute("max", buffer.duration)

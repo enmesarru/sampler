@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 #window_container {
     display: flex;   
     justify-content: center;
@@ -20,6 +24,7 @@
 #midi_container {
     background-color: #0b5345 ;
     height:25vh;
+    display: flex;
 }
 
 .audio_properties {
@@ -34,6 +39,11 @@
     padding-left:15px;
     background-color:#14a76c;
     color: #FFFFFF;
+}
+
+#keyboard {
+    width: 100%;
+    height: 100%;
 }
 
 .active {
