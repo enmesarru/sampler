@@ -14,7 +14,8 @@ window.onresize = function() {
 
 canvas.onwheel = function(event) {
     let wave = waves.list.find(x => x.isActive).wave;
-    if(event.deltaY == -3) {
+    // ToDo: Normalizing Wheel Event
+    if(event.deltaY == -3 || event.deltaY == -53) {
         wave.zoomIn();
     } else {
         wave.zoomOut();
@@ -69,6 +70,16 @@ document.getElementById("add_sample").addEventListener('click', function() {
     waves.renderList();
     sampleName.value = ""; 
 });
+
+document.getElementById("end_note").addEventListener('change', function() {
+    let wave = waves.list.find(x => x.isActive);
+    wave.endNote = parseInt(this.value);
+});
+
+document.getElementById("start_note").addEventListener('change', function() {
+    let wave = waves.list.find(x => x.isActive);
+    wave.startNote = parseInt(this.value);
+})
 
 function chooseFile() {
     let file_upload = document.getElementById("audio_file_upload");

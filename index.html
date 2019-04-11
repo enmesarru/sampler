@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="src/css/normalize.css">
     <link rel="stylesheet" href="src/css/spectre.min.css">
     <link rel="stylesheet" href="src/css/main.css" />
+    <link rel="stylesheet" href="src/css/keyboard.css">
     <title>Sampler</title>
 </head>
 <body>
@@ -50,7 +51,7 @@
                                                         <label class="form-label" for="lbl_start_note">Start Note</label>
                                                     </div>
                                                     <div class="col-9 col-sm-12">
-                                                        <input class="form-input" type="number" max="88" id="start_note" placeholder="Start Note">
+                                                        <input class="form-input" type="number" max="128" id="start_note" min="0" placeholder="Start Note">
                                                     </div>
                                                 </div>
                                             </div>
@@ -63,7 +64,7 @@
                                                             <label class="form-label" for="lbl_end_note">End Note</label>
                                                         </div>
                                                         <div class="col-9 col-sm-12">
-                                                            <input class="form-input" type="number" max="88" id="end_note" placeholder="End Note">
+                                                            <input class="form-input" type="number" min="0" max="128" id="end_note" placeholder="End Note">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,6 +106,7 @@
             </div>
         </div>
     </div>
+    <script src="src/js/utils.js"></script>
     <script src="src/js/filemanager.js"></script>
     <script src="src/js/waveform.js"></script>
     <script src="src/js/sampler_manager.js"></script>

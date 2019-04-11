@@ -1,31 +1,37 @@
-function SamplerManager() {
-    this.list = [];
-}
+class SamplerManager {
+    constructor() {
+        this.list = [];
+        this.keytable = [];
+    }
 
-SamplerManager.prototype = {
-    add: function(name, wave) {
+    add(name, wave) {
         this.list.push({
             id: this.list.length + 1,
             name,
             wave,
             isActive: false
         });
-    },
+    }
+
     addWaveform(id, waveform) {
         let sampleItemIndex = this.list.findIndex(x => x.id === id);
         this.list[sampleItemIndex].wave = waveform;
-    },
+    }
+
     remove(id) {
         this.list = this.list.filter(function(object) {
             return object.id !== id;
         });
-    },
+    }
+
     getList() {
         return this.list;
-    },
+    }
+
     getById(id) {
         return this.list.find(x => x.id === id);
-    }, 
+    }
+    
     renderList() {
         let listRoot = document.getElementById("sample_list");
         let settings = document.getElementById("settings");
@@ -58,6 +64,18 @@ SamplerManager.prototype = {
                     waveItem.wave.draw(canvas, canvasContext);
                 } else {
                     canvasContext.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+                }
+
+                if(waveItem.startNote != null) {
+                    document.getElementById("start_note").value = waveItem.startNote;
+                } else {
+                    document.getElementById("start_note").value = null;
+                }
+
+                if(waveItem.endNote != null) {
+                    document.getElementById("end_note").value = waveItem.endNote;
+                } else {
+                    document.getElementById("end_note").value = null;
                 }
             };
 
