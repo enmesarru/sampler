@@ -9,7 +9,8 @@ class SamplerManager {
             id: this.list.length + 1,
             name,
             wave,
-            isActive: false
+            isActive: false,
+            color: randomColor(50)
         });
     }
 

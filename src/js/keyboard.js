@@ -1160,7 +1160,7 @@ const Keyboard = (function() {
       triggerKey(keyCode, elementId) {
          if(elementId) {
             let domElement = document.getElementById(elementId);
-            this.changeColor(domElement);
+            this.changeTriggeredKeyColor(domElement);
          } else {
             for(let root of this.settings.key.root) {
                for(let type of this.settings.key.type) {
@@ -1168,16 +1168,22 @@ const Keyboard = (function() {
                   let domElement = document.getElementById(identifier);
    
                   if(domElement) {
-                     this.changeColor(domElement);
+                     this.changeTriggeredKeyColor(domElement);
                   }
                }
             }
          }
       },
-      changeColor(domElement) {
+      changeTriggeredKeyColor(domElement) {
          let previousColor = domElement.style.fill;
          domElement.classList.add("activeKeyboardKey");
          delay(() => { domElement.style.fill = previousColor; }, 500, 'later');
+      },
+      changeKeyColor(startNote, endNote, color) {
+         for(let i = startNote; i <= endNote; i++) {
+            const keyNode = document.querySelector(`[data-key-id='${i}']`);
+            keyNode.style.fill = color;
+         }
       },
       removeTransition(e) {
          e.target.classList.remove('activeKeyboardKey');
@@ -1189,11 +1195,10 @@ Keyboard.initialize("midi_container", KeyboardEventListener);
 
 function KeyboardEventListener(elementId) {
    const key = parseInt(document.getElementById(elementId).getAttribute("data-key-id"));
-   console.log(key)
    for(let item of waves.getList()) {
       if(item.startNote <= key && key <= item.endNote) {
          if(item.wave) {
-            item.wave.play();
+            item.wave.play(Math.abs(key - 128));
          }
       }
    }
