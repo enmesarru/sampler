@@ -43,5 +43,11 @@ html, body {
 }
 
 .active {
-    background-color: #117a65!important;
+    background-color: #000000!important;
+}
+
+.keyboard_light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

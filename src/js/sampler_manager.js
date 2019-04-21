@@ -1,7 +1,6 @@
 class SamplerManager {
     constructor() {
         this.list = [];
-        this.keytable = [];
     }
 
     add(name, wave) {
@@ -43,7 +42,7 @@ class SamplerManager {
         for(let item of this.list) {
             let listItem = document.createElement("div");
             listItem.className = "column col-2 sample_list_item";
-
+            listItem.style.backgroundColor = item.color;
             listItem.onclick = () => {
                 let waveItem = this.getById(item.id)
                 

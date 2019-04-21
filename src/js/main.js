@@ -79,6 +79,13 @@ document.getElementById("end_note").addEventListener('change', function() {
 document.getElementById("start_note").addEventListener('change', function() {
     let wave = waves.list.find(x => x.isActive);
     wave.startNote = parseInt(this.value);
+});
+
+document.getElementById("keyboard_switch_light").addEventListener('change', function() {
+    let wave = waves.list.find(x => x.isActive);
+    if(this.checked) {
+        Keyboard.changeKeyColor(wave.startNote, wave.endNote, wave.color);
+    }
 })
 
 function chooseFile() {
