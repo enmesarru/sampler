@@ -1,4 +1,7 @@
-class SamplerManager {
+import {randomColor} from './utils'
+import App from './global';
+
+export default class SamplerManager {
     constructor() {
         this.list = [];
     }
@@ -61,9 +64,9 @@ class SamplerManager {
                 settings.classList.add("d-visible");
 
                 if(waveItem.wave != null) {
-                    waveItem.wave.draw(canvas, canvasContext);
+                    waveItem.wave.draw(App.canvas, App.canvasContext);
                 } else {
-                    canvasContext.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+                    App.canvasContext.fillRect(0, 0, App.canvas.clientWidth, App.canvas.clientHeight);
                 }
 
                 if(waveItem.startNote != null) {

@@ -8,6 +8,7 @@ html, body {
     align-items: center;
     background-color: #272727;
     height:75vh;
+    overflow-y: scroll;
 }
 
 #window {

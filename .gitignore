@@ -1,3 +1,6 @@
 *.wav
 *.mp3
 .vscode
+node_modules
+dist
+.cache

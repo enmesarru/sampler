@@ -9,11 +9,11 @@ function request(method, url, response_type) {
     });
 }
 
-function getFileFromPath(path) {
+export function getFileFromPath(path, App) {
     return new Promise(function (resolve, reject) {
         request("GET", path, "arraybuffer")
         .then(function(e) {
-            audioContext.decodeAudioData(e.target.response)
+            App.audioContext.decodeAudioData(e.target.response)
                 .then(function (buffer) {
                     resolve(buffer);
                 }).catch(function (error) {

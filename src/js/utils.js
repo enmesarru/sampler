@@ -1,6 +1,6 @@
-const delay = (fn, wait, ...args) => setTimeout(fn, wait, ...args);
+export const delay = (fn, wait, ...args) => setTimeout(fn, wait, ...args);
 
-const randomColor = (brightness) => {
+export const randomColor = (brightness) => {
     const randomChannel = (brightness) => {
       let r = 255 - brightness;
       let n = 0 | ((Math.random() * r) + brightness);

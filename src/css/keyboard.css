@@ -7,6 +7,10 @@
     transition: fill .2s;
 }
 
+#midi_container {
+    width: 100%;
+}
+
 .whiteKeyboardKey {
     fill:#cccccc;
     stroke:#000000;
