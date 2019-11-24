@@ -1,5 +1,4 @@
-const {Key, Piano} = require('../src/js/piano/piano_key');
-const {SVG} = require('@svgdotjs/svg.js');
+import {Key, Piano} from '../src/js/piano/piano_key'
 
 test('Create key', () => {
     const key = new Key(1);
@@ -23,7 +22,7 @@ test('Create piano', () => {
 });
 
 test('Create keys of piano', () => {
-    const piano = new Piano(0, 15);
+    const piano = new Piano(0, 15, "test");
 
     expect(piano.key_count).toBe(16);
 
@@ -31,6 +30,5 @@ test('Create keys of piano', () => {
 
     let keys_map =  piano.keys.map(x => x.type);
     let keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1];
-
-    console.log(piano.draw());
+    expect(keys_map).toStrictEqual(keys);
 });
